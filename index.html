@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070b">
+<meta name="description" content="LearnX Premium Learning OS">
+<title>LearnX — Premium Learning OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=5">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+
+<!-- BIOMETRIC GATE -->
+<section id="gate" class="gate">
+  <div class="gate-ring ring-one"></div><div class="gate-ring ring-two"></div>
+  <div class="gate-card">
+    <div class="gate-brand"><span class="lx-mark">LX</span><b>LEARNX</b></div>
+    <div class="gate-title">Verifikasi Akses</div>
+    <div class="gate-sub">Sentuh sensor untuk membuka Learning OS.</div>
+    <button id="fingerprint" class="fingerprint" aria-label="Sentuh fingerprint untuk membuka LearnX">
+      <img src="assets/fingerprint-reference.png" alt="" class="fingerprint-image">
+      <span class="fingerprint-scan"></span>
+      <span class="fingerprint-glint"></span>
+    </button>
+    <div id="authStatus" class="auth-status"><i></i>SENSOR SIAP</div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section id="intro" class="intro hidden" aria-label="LearnX intro">
+  <video id="introVideo" playsinline webkit-playsinline preload="auto" poster="assets/intro-poster.jpg">
+    <source src="assets/intro.mp4" type="video/mp4">
+  </video>
+  <div class="intro-brand"><span class="intro-icon" data-icon="learnx"></span><b>LearnX</b></div>
+  <div id="nextWrap" class="next-wrap hidden"><button id="nextBtn" class="next-btn">Berikutnya <span data-icon="arrow"></span></button></div>
+</section>
+
+<!-- APP -->
+<div id="app" class="app hidden">
+  <main id="dashboard" class="dashboard">
+    <header class="base-header">
+      <button class="brand-button" aria-label="LearnX" data-page="dashboard">
+        <span class="brand-icon" data-icon="learnx"></span><span>LearnX</span>
+      </button>
+      <div></div>
+    </header>
+
+    <section class="hero-video">
+      <video id="dashboardVideo" playsinline webkit-playsinline preload="auto" muted loop poster="assets/dashboard-base-poster.jpg" aria-label="Video dashboard LearnX">
+        <source src="assets/dashboard-base.mp4" type="video/mp4">
+      </video>
+      <button id="dashboardMute" class="video-mute" aria-label="Matikan suara video"><span data-icon="volume"></span></button>
+    </section>
+
+    <section class="curriculum-section">
+      <div class="rail" id="curriculumRail" aria-label="Pilihan kurikulum">
+        <button class="course-card active" data-page="curriculum"><span class="course-icon" data-icon="math"></span><b>Matematika</b><small>12 modul</small></button>
+        <button class="course-card" data-page="japanese"><span class="course-icon" data-icon="japan"></span><b>Jepang</b><small>18 modul</small></button>
+        <button class="course-card" data-page="curriculum"><span class="course-icon" data-icon="english"></span><b>Inggris</b><small>10 modul</small></button>
+        <button class="course-card" data-page="curriculum"><span class="course-icon" data-icon="science"></span><b>IPA</b><small>11 modul</small></button>
+        <button class="course-card" data-page="curriculum"><span class="course-icon" data-icon="social"></span><b>IPS</b><small>9 modul</small></button>
+        <button class="course-card" data-page="curriculum"><span class="course-icon" data-icon="civics"></span><b>PKN</b><small>8 modul</small></button>
+        <button class="course-card" data-page="curriculum"><span class="course-icon" data-icon="code"></span><b>Informatika</b><small>14 modul</small></button>
+      </div>
+    </section>
+
+    <section class="quick-section" aria-label="Fitur belajar utama">
+      <button class="quick-card" data-page="iq"><span class="feature-icon" data-icon="brain"></span><span><small>COGNITIVE</small><b>Tes IQ</b></span><span class="quick-arrow" data-icon="arrow"></span></button>
+      <button class="quick-card" data-page="japanese"><span class="feature-icon" data-icon="japan"></span><span><small>LANGUAGE</small><b>Bahasa Jepang</b></span><span class="quick-arrow" data-icon="arrow"></span></button>
+      <button class="quick-card" data-page="notes"><span class="feature-icon" data-icon="note"></span><span><small>KNOWLEDGE</small><b>Catatan</b></span><span class="quick-arrow" data-icon="arrow"></span></button>
+      <button class="quick-card" data-page="focus"><span class="feature-icon" data-icon="focus"></span><span><small>DEEP WORK</small><b>Focus</b></span><span class="quick-arrow" data-icon="arrow"></span></button>
+      <button class="quick-card" data-page="progress"><span class="feature-icon" data-icon="chart"></span><span><small>INSIGHT</small><b>Progress</b></span><span class="quick-arrow" data-icon="arrow"></span></button>
+    </section>
+  </main>
+
+  <!-- Other OS pages stay lightweight and open only when requested. -->
+  <section id="curriculum" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Kurikulum</h1><p>Materi inti belajar dalam satu ruang.</p><div id="moduleGrid" class="module-grid"></div></section>
+  <section id="iq" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Tes IQ & Logika</h1><p>Latihan penalaran dinamis. Ini bukan pengukuran IQ klinis.</p><div class="quiz"><div class="quiz-top"><span id="iqProgress">SOAL 1 / 10</span><button id="newIq" class="small-btn">Set baru</button></div><div class="quiz-line"><i id="iqBar"></i></div><h2 id="iqQuestion">Memuat...</h2><div id="iqAnswers" class="answers"></div><div id="iqResult" class="result hidden"></div></div></section>
+  <section id="japanese" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Bahasa Jepang</h1><p>Hiragana, katakana, kosakata, dan percakapan.</p><div class="simple-grid"><article><span data-icon="japan"></span><b>Hiragana</b><small>46 karakter dasar</small></article><article><span data-icon="japan"></span><b>Katakana</b><small>46 karakter dasar</small></article><article><span data-icon="book"></span><b>Kosakata</b><small>Kata sehari-hari</small></article><article><span data-icon="chat"></span><b>Percakapan</b><small>Dialog situasional</small></article></div></section>
+  <section id="notes" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Catatan</h1><p>Tersimpan otomatis di perangkat.</p><textarea id="notesArea" placeholder="Tulis ringkasan atau target belajar..."></textarea></section>
+  <section id="focus" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Focus</h1><p>Sesi fokus ringan.</p><div class="focus-box"><strong id="timer">25:00</strong><div><button id="timerStart">Mulai</button><button id="timerReset">Reset</button></div></div></section>
+  <section id="progress" class="page hidden"><button class="back" data-page="dashboard"><span data-icon="back"></span>Dashboard</button><h1>Progress</h1><p>Ringkasan aktivitas lokal.</p><div class="progress-cards"><article><b id="sessionCount">0</b><small>Sesi</small></article><article><b id="bestIq">—</b><small>IQ terbaik</small></article><article><b id="noteCount">0</b><small>Karakter catatan</small></article></div></section>
+</div>
+
+<!-- Dynamic Island music: hidden until opened, so the base remains clean. -->
+<div id="musicIsland" class="music-island" aria-live="polite">
+  <button id="musicToggle" class="island-button" aria-label="Buka musik"><span data-icon="music"></span></button>
+  <div id="musicPanel" class="music-panel hidden">
+    <div class="music-row"><span class="disc"></span><div><b id="trackName">Study Ambient</b><small id="trackState">Pilih audio</small></div><button id="musicPlay">Play</button></div>
+    <input id="musicSearch" placeholder="Cari musik..." autocomplete="off">
+    <div id="musicList"></div>
+    <label class="music-upload">Tambah musik<input id="musicFile" type="file" accept="audio/*"></label>
+    <audio id="audio" preload="metadata"></audio>
+  </div>
+</div>
+
+<script src="icon-system.js?v=5"></script>
+<script src="app.js?v=5"></script>
+</body>
+</html>
